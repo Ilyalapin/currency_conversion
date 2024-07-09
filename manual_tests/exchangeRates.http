@@ -1,0 +1,79 @@
+### Get exchangeRates - 200 OK
+GET http://localhost:8080/currency_conversion/exchangeRates
+Accept: application/json
+Content-Type: application/json
+
+
+### Add new exchange rate - 201
+POST http://localhost:8080/currency_conversion/exchangeRates
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+baseCurrencyCode = EUR &
+targetCurrencyCode = USD &
+rate = 1.08
+
+
+### Add new exchange rate - 400 Bad Request
+### Missing parameter - targetCurrencyCode
+POST http://localhost:8080/currency_conversion/exchangeRates
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+baseCurrencyCode = TRY &
+targetCurrencyCode =  &
+rate = 0.99
+
+### Add new exchange rate - 400 Bad Request
+### Missing parameter - rate
+POST http://localhost:8080/currency_conversion/exchangeRates
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+baseCurrencyCode = TRY &
+targetCurrencyCode = GBP &
+rate =
+
+
+
+### Add new exchange rate - 400 Bad Request
+### Invalid parameter 'GBr' ,Currency code must be 3 uppercase letters
+POST http://localhost:8080/currency_conversion/exchangeRates
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+baseCurrencyCode = TRY &
+targetCurrencyCode = GBr &
+rate = 0.99
+
+### Add new exchange rate - 400 Bad Request
+### Invalid parameter 'xyz' ,rate must be number > 0
+POST http://localhost:8080/currency_conversion/exchangeRates
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+baseCurrencyCode = TRY &
+targetCurrencyCode = GBP &
+rate = xyz
+
+
+### Add new exchange rate - 400 Bad Request
+### Invalid parameter '-1' Rate must be greater than zero
+POST http://localhost:8080/currency_conversion/exchangeRates
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+baseCurrencyCode = TRY &
+targetCurrencyCode = GBP &
+rate = -1
+
+### Add new exchange rate - 409
+### Exchange rate already exists
+POST http://localhost:8080/currency_conversion/exchangeRates
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+baseCurrencyCode = EUR &
+targetCurrencyCode = USD &
+rate = 1.08
+

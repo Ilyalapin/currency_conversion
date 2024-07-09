@@ -1,0 +1,39 @@
+### Exchange - 200 Ok
+### Direct exchange rate
+GET http://localhost:8080/currency_conversion/exchange?from=USD&to=RUB&amount=10
+Accept: application/json
+
+### Exchange - 200 Ok
+### Reverse exchange rate
+GET http://localhost:8080/currency_conversion/exchange?from=CNY&to=USD&amount=10
+Accept: application/json
+
+### Exchange - 200 Ok
+### Cross exchange rate
+GET http://localhost:8080/currency_conversion/exchange?from=INR&to=EUR&amount=10
+Accept: application/json
+
+### Exchange - 404 Not Found
+### Exchange Rates Not Found
+GET http://localhost:8080/currency_conversion/exchange?from=USD&to=ARS&amount=10
+Accept: application/json
+
+### Exchange - 400 Bad Parameter
+### Invalid parameter '111' ,Currency code must be 3 uppercase letters
+GET http://localhost:8080/currency_conversion/exchange?from=111&to=EUR&amount=10
+Accept: application/json
+
+### Exchange - 400 Bad Parameter
+### Invalid parameter 'USd' ,Currency code must be 3 uppercase letters
+GET http://localhost:8080/currency_conversion/exchange?from=USd&to=EUR&amount=10
+Accept: application/json
+
+### Exchange - 400 Bad Parameter
+### Missing parameter - amount
+GET http://localhost:8080/currency_conversion/exchange?from=USD&to=EUR&amount=
+Accept: application/json
+
+### Exchange - 400 Bad Parameter
+### Invalid parameter 'Qwe' ,'amount' must be number greater than zero
+GET http://localhost:8080/currency_conversion/exchange?from=USD&to=EUR&amount= Qwe
+Accept: application/json

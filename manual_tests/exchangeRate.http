@@ -1,0 +1,42 @@
+### Get exchange rate - 200 Ok
+GET http://localhost:8080/currency_conversion/exchangeRate/USDRUB
+Accept: application/json
+
+### Get exchange rate - 400 Bad Request
+### Invalid parameter '1QS' ,Currency code must be 3 uppercase letters
+GET http://localhost:8080/currency_conversion/exchangeRate/1QSEUR
+Accept: application/json
+
+### Get exchange rate - 404 Not Found
+### Exchange rate with codes: 'AFN', 'DSD' not found
+GET http://localhost:8080/currency_conversion/exchangeRate/AFNDSD
+Accept: application/json
+
+
+### Get exchange rate - 400 Bad Request
+### Invalid parameter 'RU' ,Currency code must be 3 letters
+GET http://localhost:8080/currency_conversion/exchangeRate/USDRU
+Accept: application/json
+
+### Patch exchange rate - 200 Ok
+PATCH http://localhost:8080/currency_conversion/exchangeRate/USDRUB
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+rate = 89
+
+### Patch exchange rate - 400 Bad Request
+### Invalid parameter 'qwe' ,rate must be number > 0
+PATCH http://localhost:8080/currency_conversion/exchangeRate/USDEUR
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+rate = qwe
+
+### Patch exchange rate - 404 Not Found
+### Failed to update exchange rate 'ARS' - 'EUR', no such exchange rate found
+PATCH http://localhost:8080/currency_conversion/exchangeRate/ARSEUR
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+rate = 1.32

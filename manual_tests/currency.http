@@ -1,0 +1,29 @@
+
+### Get currency by code - 200 Ok
+GET http://localhost:8080/currency_conversion/currency/USD
+Accept: application/json
+
+### Get currency by code - 404 Not Found
+### Currency with code 'PLN' not found
+GET http://localhost:8080/currency_conversion/currency/PLN
+Accept: application/json
+
+### Get currency by code - 400 Bad Request
+### Invalid parameter 'USd' ,Currency code must be 3 uppercase letters
+GET http://localhost:8080/currency_conversion/currency/USd
+Accept: application/json
+
+### Get currency by code - 400 Bad Request
+### Invalid parameter 'US' ,Currency code must be 3 uppercase letters
+GET http://localhost:8080/currency_conversion/currency/US
+Accept: application/json
+
+### Get currency by code - 400 Bad Request
+### Invalid parameter '' ,Currency code must be 3 uppercase letters
+GET http://localhost:8080/currency_conversion/currency/
+Accept: application/json
+
+### Get currency by code - 400 Bad Request
+### Invalid parameter '123' ,Currency code must be 3 uppercase letters
+GET http://localhost:8080/currency_conversion/currency/123
+Accept: application/json
